@@ -1,0 +1,14 @@
+/build/
+/dist/
+/venv/
+/.git/
+*.log
+/.idea/
+/__pycache__/
+/*/__pycache__/
+/compile/dist/
+/compile/build/
+/test_io/
+config.bin
+history.log
+sconfig.bin
