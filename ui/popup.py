@@ -68,7 +68,7 @@ def LISTENING_VOICE():
         "",
         [
             [sg.P(), sg.T(txt.LISTENING_VOICE, font="Default 14 bold"), sg.P()],
-            [sg.ProgressBar(700, s=(32, 20), key="-LISTENING-")]
+            [sg.ProgressBar(1500, s=(32, 20), key="-LISTENING-")]
         ],
         no_titlebar=True,
         keep_on_top=True

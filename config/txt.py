@@ -6,7 +6,7 @@ NO_MIC_ERROR = "Parece que não existe nenhum microfone selecionado por padrão 
 LISTENING_ERROR = 'Não consegui entender o que você disse.'
 WAIT_TIMEOUT_ERROR = 'Não ouvi o que você disse.'
 LISTENING_REQUEST_ERROR = 'Desculpe, não consigo reconhecer sua voz no momento.; {0}'
-LISTENING_VOICE = 'Escutando...'
+LISTENING_VOICE = 'Fale o que você precisa...'
 GPT_REQUEST_PROMPT = "Você faz parte de um script Python que permite realizar conversões de áudio e vídeo, utilizando o ffmpeg, no Windows.\n\
 Atenção: Sua resposta será DIRETAMENTE executada como um comando do ffmpeg em um terminal do Windows, utilizando o 'subprocess.Popen' do Python.\n\
 Portanto, eu preciso que, independente do que seja pedido pelo usuário, sua resposta contenha ESTRITAMENTE APENAS O COMANDO E NADA MAIS!\n\
