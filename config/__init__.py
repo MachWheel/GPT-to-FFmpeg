@@ -5,7 +5,6 @@ from os.path import basename
 
 import PySimpleGUI as sg
 
-from ui import popup
 from . import params, txt, history, download
 
 sg.user_settings_filename(params.UI_SETTINGS_FILE)
@@ -22,14 +21,6 @@ def get_ffmpeg_binary():
             download.show_task(download_task)
     except Exception as err:
         sg.popup('', err, no_titlebar=True)
-
-
-def get_last_prompt() -> str:
-    return history.get_last(params.PROMPT_HISTORY_FILE)
-
-
-def get_last_ffmpeg_cmd() -> str:
-    return history.get_last(params.FFMPEG_HISTORY_FILE)
 
 
 def update_prompt_history(prompt: str) -> None:

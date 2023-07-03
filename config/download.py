@@ -1,9 +1,9 @@
+import os
+import shutil
+import zipfile
 from concurrent.futures import Future
 
 import requests
-import zipfile
-import os
-import shutil
 
 from ui import popup
 
