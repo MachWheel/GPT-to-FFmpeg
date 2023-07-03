@@ -3,4 +3,7 @@ LIGHT_SG_THEME = 'LightGray'
 GPT_MODEL = "gpt-3.5-turbo"
 KEY_FILE = 'config.bin'
 SALT_FILE = 'sconfig.bin'
+UI_SETTINGS_FILE = 'gpt-to-ffmpeg.json'
+PROMPT_HISTORY_FILE = 'prompt-history.log'
+FFMPEG_HISTORY_FILE = 'cmd-history.log'
 OPENAI_API_SITE = 'https://beta.openai.com/account/api-keys'

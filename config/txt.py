@@ -7,6 +7,7 @@ LISTENING_ERROR = 'Não consegui entender o que você disse.'
 WAIT_TIMEOUT_ERROR = 'Não ouvi o que você disse.'
 LISTENING_REQUEST_ERROR = 'Desculpe, não consigo reconhecer sua voz no momento.; {0}'
 LISTENING_VOICE = 'Fale o que você precisa...'
+DOWNLOADING_FFMPEG = 'Baixando ffmpeg...'
 GPT_REQUEST_PROMPT = "Você faz parte de um script Python que permite realizar conversões de áudio e vídeo, utilizando o ffmpeg, no Windows.\n\
 Atenção: Sua resposta será DIRETAMENTE executada como um comando do ffmpeg em um terminal do Windows, utilizando o 'subprocess.Popen' do Python.\n\
 Portanto, eu preciso que, independente do que seja pedido pelo usuário, sua resposta contenha ESTRITAMENTE APENAS O COMANDO E NADA MAIS!\n\
@@ -14,18 +15,20 @@ Sabendo disso, este é o pedido do usuário:\n\n\
 {prompt}\n\
 O arquivo que será utilizado é este aqui:\n\
 \"{input_file}\"\n\
-O arquivo de saída deve ser gerado no mesmo diretório do arquivo de entrada, com o prefixo \"novo_\" em seu nome."
+O arquivo de saída deve ser gerado no mesmo diretório do arquivo de entrada, com o prefixo \"gpt_\" em seu nome."
 GPT_UNAVAILABLE_ERROR = "Serviço do OpenAI sobrecarregado ou indisponível no momento"
 GPT_AUTH_ERROR = "Erro de autenticação:\nA API key salva é inválida e será apagada.\nO programa será encerrado."
-FILE_BROWSE_TEXT = "Selecione o arquivo de entrada:"
-FILE_BROWSE_BUTTON = "Procurar..."
-CONVERT_PROMPT_TEXT = "Diga como quer converter ou alterar o arquivo:"
-VOICE_COMMAND = "Comando de Voz"
-EXECUTE_TEXT = "Executar"
-FOOTER_NOTE = "Seu arquivo de saída será gerado no mesmo diretório da entrada"
-EXPORTED_SUCCESS_MSG = '\n\nSeu arquivo foi gerado com sucesso!\nA pasta com o arquivo gerado será aberta.\n\n'
+FILE_BROWSE_TEXT = "1. Selecione o arquivo de entrada:"
+FILE_BROWSE_BUTTON = "Procurar arquivo..."
+CONVERT_PROMPT_TEXT = "2. Diga como quer converter ou alterar o arquivo:"
+VIEW_HISTORY = "...ou selecione a partir do seu histórico"
+VOICE_COMMAND = "Escrever com a minha voz"
+EXECUTE_TEXT = "Iniciar"
+NO_SELECTED_FILE = "Nenhum arquivo de entrada selecionado ainda"
+FOOTER_NOTE = 'O arquivo é exportado no mesmo diretório da entrada,\ncom o prefixo "gpt_" em seu nome'
+EXPORTED_SUCCESS_MSG = '\nSeu arquivo foi gerado com sucesso!\nA pasta com o arquivo gerado será aberta.\n'
 EXPORTED_SUCCESS_BTN = 'Abrir pasta'
-ENTER_PASSWORD = 'Insira sua senha para abrir o programa'
+ENTER_PASSWORD = f'Digite sua senha para abrir o {APP_NAME}'
 WELCOME = '\nSeja bem vindo\n'
 INCORRECT_PASSWORD_ERROR = 'Senha incorreta. Tente novamente.'
 ENTER_NEW_PASSWORD = 'Insira uma nova senha (com pelo menos 8 caracteres)'
@@ -40,6 +43,7 @@ Caso esqueça esta senha, você deverá:\n\
 CONTINUE = 'Continuar'
 GO_TO_SITE = 'Ir até a página "API keys" no site da OpenAI'
 ENTER_API_KEY = 'Insira sua OpenAI API key'
+REMEMBER_PASSWORD = "Deseja lembrar sua senha para o próximo acesso?"
 INVALID_API_KEY = 'Formato inválido da API key\nInsira sua OpenAI API key'
 PASSWORD_LIMIT_ERROR = 'Limite de tentativas excedido.\n\
 Por questões de segurança, a API key salva será excluída.\n\n\

@@ -4,16 +4,16 @@ import threading
 import PySimpleGUI as sg
 import openai
 
+import config
 import core
 import security
 import ui
-from config import txt
 from ui import popup
 
 
 def main(api_key: str):
     openai.api_key = api_key
-    window = sg.Window(txt.APP_NAME, ui.layout)
+    window = sg.Window(config.txt.APP_NAME, ui.layout)
 
     while True:
         event, values = window.read()
@@ -33,6 +33,9 @@ def main(api_key: str):
             ffmpeg_command = core.request_gpt_cmd(prompt, input_file)
             if not ffmpeg_command:
                 continue
+            config.update_prompt_history(prompt)
+            config.update_ffmpeg_history(ffmpeg_command)
+            ui.update_history_combo(window)
             if popup.CMD_WARNING(ffmpeg_command) == "Yes":
                 threading.Thread(
                     target=core.run_ffmpeg,
@@ -42,6 +45,14 @@ def main(api_key: str):
 
         elif event == "-VOICE-":
             core.get_voice_input(window)
+
+        elif event == "-HISTORY-":
+            window['-PROMPT-'].update(values['-HISTORY-'])
+
+        elif event == "-FILEPATH-":
+            filename = values['-FILEPATH-'].split('/')[-1]
+            if filename:
+                window['-SELECTED-'].update(filename)
 
         elif event == '-THREAD-':
             window['-PROGRESS-'].UpdateBar(values['-THREAD-'])
@@ -58,4 +69,6 @@ if __name__ == "__main__":
     openai_key = security.get_api_key()
     if not openai_key:
         exit(0)
+    if not config.existing_ffmpeg_binary():
+        config.get_ffmpeg_binary()
     main(openai_key)

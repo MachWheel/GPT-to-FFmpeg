@@ -75,6 +75,18 @@ def LISTENING_VOICE():
     )
 
 
+def DOWNLOADING_FILE():
+    return sg.Window(
+        "",
+        [
+            [sg.P(), sg.T(txt.DOWNLOADING_FFMPEG, font="Default 14 bold"), sg.P()],
+            [sg.ProgressBar(1000, s=(32, 20), key="-DOWNLOADING-")]
+        ],
+        no_titlebar=True,
+        keep_on_top=True
+    )
+
+
 def ENTER_NEW_PASSWORD():
     return sg.popup_get_text(
         txt.ENTER_NEW_PASSWORD,
@@ -98,6 +110,7 @@ def CONFIRM_NEW_PASSWORD():
 def ENTER_PASSWORD():
     return sg.popup_get_text(
         txt.ENTER_PASSWORD,
+        default_text=sg.user_settings_get_entry('-APP_PASSWORD-', ''),
         password_char='*',
         no_titlebar=True,
         keep_on_top=True,
@@ -204,6 +217,16 @@ def PROMPT_NEEDED_ERROR():
 def CMD_WARNING(ffmpeg_command):
     return sg.popup_yes_no(
         txt.CMD_WARNING(ffmpeg_command),
+        no_titlebar=True,
+        keep_on_top=True,
+        font="Default 12",
+        background_color="black"
+    )
+
+
+def REMEMBER_PASSWORD():
+    return sg.popup_yes_no(
+        txt.REMEMBER_PASSWORD,
         no_titlebar=True,
         keep_on_top=True,
         font="Default 12",

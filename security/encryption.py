@@ -1,5 +1,6 @@
 import base64
 
+import PySimpleGUI as sg
 from cryptography.fernet import Fernet
 from cryptography.fernet import InvalidToken
 from cryptography.hazmat.backends import default_backend
@@ -44,6 +45,7 @@ def decrypt_api_key() -> str | None:
             fernet = Fernet(derived_key)
             decrypted_data = fernet.decrypt(data)
             api_key = decrypted_data.decode()
+            ask_remember_password(password)
             return api_key
         except InvalidToken:
             popup.INCORRECT_PASSWORD_ERROR()
@@ -51,3 +53,9 @@ def decrypt_api_key() -> str | None:
     popup.PASSWORD_LIMIT_ERROR()
     storage.clear_stored_keys()
     return None
+
+
+def ask_remember_password(password: str):
+    if sg.user_settings_get_entry('-APP_PASSWORD-') is None:
+        if popup.REMEMBER_PASSWORD() == 'Yes':
+            sg.user_settings_set_entry('-APP_PASSWORD-', password)
