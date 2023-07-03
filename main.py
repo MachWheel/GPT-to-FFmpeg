@@ -1,4 +1,6 @@
+import importlib.util
 import os
+import sys
 import threading
 
 import PySimpleGUI as sg
@@ -66,10 +68,22 @@ def main(api_key: str):
     window.close()
 
 
+def close_splash():
+    """
+    Closes the application loading splash screen.
+    """
+    if '_PYIBoot_SPLASH' in os.environ:
+        if not importlib.util.find_spec("pyi_splash"):
+            return
+        import pyi_splash
+        pyi_splash.close()
+
+
 if __name__ == "__main__":
+    close_splash()
     openai_key = security.get_api_key()
     if not openai_key:
-        exit(0)
+        sys.exit(0)
     if not config.existing_ffmpeg_binary():
         config.get_ffmpeg_binary()
     main(openai_key)
