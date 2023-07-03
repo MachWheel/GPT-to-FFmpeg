@@ -35,7 +35,8 @@ def main(api_key: str):
                 continue
             config.update_prompt_history(prompt)
             config.update_ffmpeg_history(ffmpeg_command)
-            ui.update_history_combo(window)
+            if values.get('-HISTORY-'):
+                ui.update_history_combo(window)
             if popup.CMD_WARNING(ffmpeg_command) == "Yes":
                 threading.Thread(
                     target=core.run_ffmpeg,
