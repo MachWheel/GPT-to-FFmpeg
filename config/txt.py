@@ -8,8 +8,8 @@ LISTENING_REQUEST_ERROR = 'Desculpe, não consigo reconhecer sua voz no momento.
 LISTENING_VOICE = 'Fale o que você precisa...'
 DOWNLOADING_FFMPEG = 'Baixando ffmpeg...'
 GPT_REQUEST_PROMPT = "Você faz parte de um script Python que permite realizar conversões de áudio e vídeo, utilizando o ffmpeg, no Windows.\n\
-Atenção: Sua resposta será DIRETAMENTE executada como um comando do ffmpeg em um terminal do Windows, utilizando o 'subprocess.Popen' do Python.\n\
-Portanto, eu preciso que, independente do que seja pedido pelo usuário, sua resposta contenha ESTRITAMENTE APENAS O COMANDO E NADA MAIS!\n\
+Atenção: Sua resposta será DIRETAMENTE executada em um terminal do Windows.\n\
+Portanto, eu preciso que, independente do que seja pedido pelo usuário, sua resposta contenha ESTRITAMENTE APENAS UM COMANDO FFMPEG PARA SER EXECUTADO E NADA MAIS!\n\
 Sabendo disso, este é o pedido do usuário:\n\n\
 {prompt}\n\
 O arquivo que será utilizado é este aqui:\n\
