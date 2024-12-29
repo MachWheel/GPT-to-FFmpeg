@@ -1,4 +1,4 @@
-import PySimpleGUI as sg
+import PySimpleGUI as sg  # noqa
 
 from config import txt
 
@@ -151,10 +151,9 @@ def PASSWORD_ERROR():
 def API_DISCLAIMER():
     layout = [
         [sg.T(txt.API_DISCLAIMER)],
-        [
-            sg.B(txt.CONTINUE, k="-CONTINUE-", font="Default 12 bold"),
-            sg.B(txt.GO_TO_SITE, k="-SITE-")
-        ]
+        [sg.P(), sg.B(txt.GO_TO_SITE, k="-SITE-"), sg.P()],
+        [sg.P(), sg.B(txt.STORE_KEY_LOCALLY, k="-CONTINUE-", font="Default 12 bold"), sg.P()],
+        [sg.P(), sg.B(txt.QUIT, k="-QUIT-"), sg.P()],
     ]
     return sg.Window(txt.APP_NAME, layout, font="Default 12")
 

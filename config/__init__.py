@@ -3,7 +3,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor
 from os.path import basename
 
-import PySimpleGUI as sg
+import PySimpleGUI as sg  # noqa
 
 from . import params, txt, history, download
 

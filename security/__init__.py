@@ -1,11 +1,20 @@
 import os
+import sys
 import webbrowser
 
-import PySimpleGUI as sg
+import PySimpleGUI as sg  # noqa
 
 from config import params
 from ui import popup
 from . import encryption
+
+
+def get_environment_api_key() -> str | None:
+    """
+    Returns the value of the 'OPENAI_API_KEY' environment variable as a string.
+    If the variable is not set, returns None.
+    """
+    return os.environ.get("OPENAI_API_KEY")
 
 
 def get_api_key():
@@ -50,6 +59,8 @@ def _show_api_disclaimer():
             break
         elif event == '-SITE-':
             webbrowser.open(params.OPENAI_API_SITE)
+        elif event == '-QUIT-':
+            sys.exit(0)
 
 
 def _get_new_api_key():

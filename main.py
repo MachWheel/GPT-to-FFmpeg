@@ -3,7 +3,7 @@ import os
 import sys
 import threading
 
-import PySimpleGUI as sg
+import PySimpleGUI as sg  # noqa
 import openai
 
 import config
@@ -81,9 +81,11 @@ def close_splash():
 
 if __name__ == "__main__":
     close_splash()
-    openai_key = security.get_api_key()
-    if not openai_key:
-        sys.exit(0)
     if not config.existing_ffmpeg_binary():
         config.get_ffmpeg_binary()
+    openai_key = security.get_environment_api_key()
+    if not openai_key:
+        openai_key = security.get_api_key()
+    if not openai_key:
+        sys.exit(0)
     main(openai_key)

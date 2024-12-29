@@ -1,6 +1,6 @@
 from concurrent.futures import Future
 
-import PySimpleGUI as sg
+import PySimpleGUI as sg  # noqa
 import speech_recognition as sr
 
 from config import params

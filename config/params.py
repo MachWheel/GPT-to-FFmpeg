@@ -1,6 +1,5 @@
 SG_THEME = 'DarkGrey6'
 LIGHT_SG_THEME = 'LightGray'
-GPT_MODEL = "gpt-3.5-turbo"
 KEY_FILE = 'config.bin'
 SALT_FILE = 'sconfig.bin'
 UI_SETTINGS_FILE = 'gpt-to-ffmpeg.json'

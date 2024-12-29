@@ -7,9 +7,9 @@ WAIT_TIMEOUT_ERROR = 'Não ouvi o que você disse.'
 LISTENING_REQUEST_ERROR = 'Desculpe, não consigo reconhecer sua voz no momento.; {0}'
 LISTENING_VOICE = 'Fale o que você precisa...'
 DOWNLOADING_FFMPEG = 'Baixando ffmpeg...'
-GPT_REQUEST_PROMPT = "Você faz parte de um script Python que permite realizar conversões de áudio e vídeo, utilizando o ffmpeg, no Windows.\n\
+GPT_REQUEST_PROMPT = "Você faz parte de um script Python que permite realizar conversões de áudio e vídeo, utilizando o ffmpeg, em um computador rodando Windows.\n\
 Atenção: Sua resposta será DIRETAMENTE executada em um terminal do Windows.\n\
-Portanto, eu preciso que, independente do que seja pedido pelo usuário, sua resposta contenha ESTRITAMENTE APENAS UM COMANDO FFMPEG PARA SER EXECUTADO E NADA MAIS!\n\
+Portanto, eu preciso que, independente do que seja pedido pelo usuário, sua resposta contenha ESTRITAMENTE APENAS UM COMANDO FFMPEG PARA SER EXECUTADO, SEM NENHUMA FORMATAÇÃO OU MARKUP!\n\
 Sabendo disso, este é o pedido do usuário:\n\n\
 {prompt}\n\
 O arquivo que será utilizado é este aqui:\n\
@@ -34,12 +34,17 @@ ENTER_NEW_PASSWORD = 'Insira uma nova senha (com pelo menos 8 caracteres)'
 CONFIRM_NEW_PASSWORD = 'Confirme sua senha'
 PASSWORD_ERROR = 'As senhas não correspondem ou têm menos de 8 caracteres. Tente novamente.'
 API_DISCLAIMER = "\nÉ necessário uma API key da OpenAI para que este programa funcione\n\n\
+A chave não está presente na variável de ambiente \"OPENAI_API_KEY\".\n\n\n\
+Você pode fechar o programa e definir esta variavel manualmente,\n\
+ou continuar e armazenar sua chave aqui:\n\n\
 Você definirá uma senha para proteger o acesso a sua chave\n\n\
 Esta senha será necessária sempre que você abrir o programa\n\n\
 Caso esqueça esta senha, você deverá:\n\
 - Gerar uma nova API key\n\
 - Definir uma nova senha\n\n"
 CONTINUE = 'Continuar'
+STORE_KEY_LOCALLY = 'Continuar e armazenar aqui'
+QUIT = 'Sair do programa'
 GO_TO_SITE = 'Ir até a página "API keys" no site da OpenAI'
 ENTER_API_KEY = 'Insira sua OpenAI API key'
 REMEMBER_PASSWORD = "Deseja lembrar sua senha para o próximo acesso?"

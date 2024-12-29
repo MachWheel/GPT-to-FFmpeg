@@ -1,6 +1,6 @@
 import base64
 
-import PySimpleGUI as sg
+import PySimpleGUI as sg  # noqa
 from cryptography.fernet import Fernet
 from cryptography.fernet import InvalidToken
 from cryptography.hazmat.backends import default_backend

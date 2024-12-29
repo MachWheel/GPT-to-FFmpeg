@@ -1,11 +1,12 @@
+import os
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
 
-import PySimpleGUI as sg
+import PySimpleGUI as sg  # noqa
 import openai
 import speech_recognition as sr
 
-from config import params, txt
+from config import txt
 from security.storage import clear_stored_keys
 from ui import popup
 from . import voice
@@ -30,7 +31,7 @@ def get_voice_input(window: sg.Window):
 
 
 def request_gpt_cmd(prompt, input_file) -> str:
-    model = params.GPT_MODEL
+    model = _get_openai_model_cfg()
     try:
         chat_completion = openai.ChatCompletion.create(
             model=model,
@@ -73,3 +74,19 @@ def run_ffmpeg(command, window):
             window.write_event_value('-THREAD-', elapsed_time * 100 / duration)
     if process.returncode == 0 and duration is not None:
         window.write_event_value('-DONE-', '')
+
+
+def _get_openai_model_cfg():
+    """
+    Returns the contents of the 'openai-model.cfg' file.
+    If the file doesn't exist, creates it with the line 'o1-mini' and returns that line.
+    """
+    filename = "openai-model.cfg"
+    default_model = "o1-mini"
+    if not os.path.exists(filename):
+        with open(filename, "wt") as file:
+            file.write(default_model)
+        return default_model
+
+    with open(filename, "rt") as file:
+        return file.read().strip()
