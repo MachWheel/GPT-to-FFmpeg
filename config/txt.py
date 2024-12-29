@@ -1,4 +1,4 @@
-APP_NAME = "GPT to FFmpeg"
+APP_NAME = "GPT to FFmpeg  v1.2"
 INPUT_FILE_NEEDED_ERROR = "Você precisa selecionar um arquivo de entrada primeiro"
 PROMPT_NEEDED_ERROR = 'Diga como quer converter ou alterar o arquivo primeiro\n\nExemplo:\n"Quero só o áudio deste vídeo em .mp3"'
 NO_MIC_ERROR = "Parece que não existe nenhum microfone selecionado por padrão no seu computador."
