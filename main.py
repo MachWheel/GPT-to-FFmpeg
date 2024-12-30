@@ -1,4 +1,3 @@
-import importlib.util
 import os
 import sys
 import threading
@@ -15,7 +14,8 @@ from ui import popup
 
 def main(api_key: str):
     openai.api_key = api_key
-    window = sg.Window(config.txt.APP_NAME, ui.layout)
+    openai_model = config.openai_model_cfg()
+    window = sg.Window(config.txt.APP_NAME, ui.layout(openai_model))
 
     while True:
         event, values = window.read()
@@ -32,7 +32,7 @@ def main(api_key: str):
             if not prompt:
                 popup.PROMPT_NEEDED_ERROR()
                 continue
-            ffmpeg_command = core.request_gpt_cmd(prompt, input_file)
+            ffmpeg_command = core.request_gpt_cmd(openai_model, prompt, input_file)
             if not ffmpeg_command:
                 continue
             config.update_prompt_history(prompt)
@@ -72,11 +72,11 @@ def close_splash():
     """
     Closes the application loading splash screen.
     """
-    if '_PYIBoot_SPLASH' in os.environ:
-        if not importlib.util.find_spec("pyi_splash"):
-            return
-        import pyi_splash
+    try:
+        import pyi_splash  # noqa
         pyi_splash.close()
+    except Exception:  # noqa
+        pass
 
 
 if __name__ == "__main__":

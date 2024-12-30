@@ -1,1 +1,0 @@
-pyinstaller -w --onefile main.py --icon app.ico --name GPT-to-FFmpeg --splash splash.jpg

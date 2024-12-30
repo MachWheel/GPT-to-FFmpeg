@@ -10,6 +10,22 @@ from . import params, txt, history, download
 sg.user_settings_filename(params.UI_SETTINGS_FILE)
 
 
+def openai_model_cfg():
+    """
+    Returns the contents of the 'openai-model.cfg' file.
+    If the file doesn't exist, creates it with the line 'o1-mini' and returns that line.
+    """
+    filename = "openai-model.cfg"
+    default_model = "o1-mini"
+    if not os.path.exists(filename):
+        with open(filename, "wt") as file:
+            file.write(default_model)
+        return default_model
+
+    with open(filename, "rt") as file:
+        return file.read().strip()
+
+
 def existing_ffmpeg_binary():
     return os.path.isfile('ffmpeg.exe')
 
